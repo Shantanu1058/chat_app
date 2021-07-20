@@ -6,10 +6,7 @@ class SettingScreen extends StatelessWidget {
   static const routeName = '/settings';
   @override
   Widget build(BuildContext context) {
-    Future<void> getUserName() async {
-      Constants.name = await HelperFunctions.getUserName();
-    }
-
+    Constants.name = HelperFunctions.getUserName().toString();
     return Scaffold(
       appBar: AppBar(
         title: Text("Settings"),

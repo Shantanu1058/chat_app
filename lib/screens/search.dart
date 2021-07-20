@@ -69,7 +69,9 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           ));
     } else {
-      SnackBar(content: Text("Cannot Search Your Own Name "));
+      SnackBar(
+          content: Text(
+              "Cannot Search Your Own Name Or that user is not available"));
     }
   }
 
