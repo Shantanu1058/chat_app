@@ -3,6 +3,7 @@ import 'package:chat_app/screens/sign_up.dart';
 import 'package:flutter/material.dart';
 
 class Authenticate extends StatefulWidget {
+  static const routeName = '/routeName';
   @override
   _AuthenticateState createState() => _AuthenticateState();
 }
