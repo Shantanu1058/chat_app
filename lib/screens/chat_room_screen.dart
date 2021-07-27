@@ -59,6 +59,7 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           actions: [
             GestureDetector(
               onTap: () =>
@@ -72,8 +73,11 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
               itemBuilder: (context) => [
                 PopupMenuItem(
                   child: GestureDetector(
-                      onTap: () => Navigator.of(context)
-                          .pushNamed(SettingScreen.routeName),
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(SettingScreen.routeName);
+                        // Navigator.pop(super.context, 1);
+                      },
                       child: Text("Settings")),
                   value: 1,
                 ),
@@ -81,12 +85,9 @@ class _ChatRoomScreenState extends State<ChatRoomScreen> {
                   child: GestureDetector(
                       onTap: () async {
                         await AuthMethods().signOut().then(
-                            (value) => HelperFunctions.saveUserLoggedIn(value));
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Authenticate(),
-                            ));
+                            (value) => HelperFunctions.saveUserLoggedIn(false));
+                        Navigator.pushReplacementNamed(
+                            context, Authenticate.routeName);
                       },
                       child: Text("Logout")),
                   value: 2,
@@ -124,8 +125,8 @@ class ChatTile extends StatelessWidget {
         child: Row(
           children: [
             Container(
-                width: 40,
-                height: 40,
+                width: 50,
+                height: 50,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     border: Border.all(
@@ -138,7 +139,10 @@ class ChatTile extends StatelessWidget {
             SizedBox(
               width: 8,
             ),
-            Text(userName)
+            Text(
+              userName,
+              style: TextStyle(fontSize: 18),
+            )
           ],
         ),
       ),
