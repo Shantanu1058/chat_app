@@ -22,7 +22,10 @@ class DataBase {
   }
 
   uploadUserInfo(userMap) {
-    FirebaseFirestore.instance.collection("users").add(userMap);
+    FirebaseFirestore.instance
+        .collection("users")
+        .doc(userMap['email'])
+        .set(userMap);
   }
 
   createChatRoom(String chatRoomId, chatRoomMap) {
