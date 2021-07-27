@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 
 class SettingScreen extends StatelessWidget {
   static const routeName = '/settings';
+  getUserName() async {
+    return await HelperFunctions.getUserName();
+  }
+
   @override
   Widget build(BuildContext context) {
-    Constants.name = HelperFunctions.getUserName().toString();
     return Scaffold(
       appBar: AppBar(
         title: Text("Settings"),
@@ -26,7 +29,7 @@ class SettingScreen extends StatelessWidget {
                       ),
                       color: Colors.yellowAccent,
                       borderRadius: BorderRadius.circular(50)),
-                  child: Text("${Constants.name.substring(0, 1)}",
+                  child: Text("${getUserName().toString().substring(0, 1)}",
                       style: TextStyle(fontSize: 16.0))),
               SizedBox(
                 width: 10,
@@ -43,7 +46,12 @@ class SettingScreen extends StatelessWidget {
           thickness: 2,
         ),
         ListTile(
-          onTap: () {},
+          onTap: () {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("Data Not available"),
+              behavior: SnackBarBehavior.floating,
+            ));
+          },
           subtitle: Text("Theme, wallpapers, chat history"),
           leading: Icon(
             Icons.chat_sharp,
@@ -53,7 +61,12 @@ class SettingScreen extends StatelessWidget {
         ),
         Divider(),
         ListTile(
-          onTap: () {},
+          onTap: () {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("Data Not available"),
+              behavior: SnackBarBehavior.floating,
+            ));
+          },
           subtitle: Text("Privacy, security"),
           leading: Icon(
             Icons.vpn_key,
