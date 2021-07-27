@@ -46,7 +46,8 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("M4RS"),
+        automaticallyImplyLeading: false,
+        title: Text("MyChatApp"),
       ),
       body: isLoading
           ? Center(
@@ -55,7 +56,11 @@ class _SignUpState extends State<SignUp> {
           : SingleChildScrollView(
               child: Container(
                 height: MediaQuery.of(context).size.height - 60,
-                decoration: BoxDecoration(color: Colors.black45),
+                decoration: BoxDecoration(
+                    color: Colors.black45,
+                    image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage('images/startup_page2.png'))),
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 alignment: Alignment.center,
                 child: Container(
@@ -148,7 +153,22 @@ class _SignUpState extends State<SignUp> {
                             alignment: Alignment.center,
                             width: MediaQuery.of(context).size.width,
                             padding: EdgeInsets.symmetric(vertical: 20),
-                            child: Text("Sign Up With Google"),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                      height:
+                                          MediaQuery.of(context).size.width *
+                                              0.055,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.055,
+                                      child: Image.asset(
+                                          'images/google_icon.png')),
+                                  SizedBox(
+                                    width: 3,
+                                  ),
+                                  Text("Sign Up With Google")
+                                ]),
                           ),
                         ),
                         SizedBox(
