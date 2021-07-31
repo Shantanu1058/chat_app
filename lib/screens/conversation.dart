@@ -91,60 +91,62 @@ class _ConversationScreenState extends State<ConversationScreen> {
         appBar: AppBar(
           title: Text(widget.userName),
         ),
-        body: Stack(children: [
-          Container(
-              height: MediaQuery.of(context).size.height,
-              child: Column(children: [
-                chatMessages(),
-                SizedBox(
-                  height: 65,
-                )
-              ])),
-          Container(
-            padding: EdgeInsets.fromLTRB(5, 0, 0, 8),
-            alignment: Alignment.bottomCenter,
-            child: Row(
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.85,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black87),
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Row(children: [
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Container(
-                      child: Expanded(
-                        child: TextField(
-                            cursorHeight: 23.0,
-                            controller: messageEditingController,
-                            decoration: InputDecoration(
-                                hintStyle: TextStyle(
-                                  color: Colors.black,
-                                ),
-                                hintText: "Type The Message",
-                                border: InputBorder.none)),
+        body: SafeArea(
+          child: Stack(children: [
+            Container(
+                height: MediaQuery.of(context).size.height,
+                child: Column(children: [
+                  chatMessages(),
+                  SizedBox(
+                    height: 65,
+                  )
+                ])),
+            Container(
+              padding: EdgeInsets.fromLTRB(5, 0, 0, 8),
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.85,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black87),
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Row(children: [
+                      SizedBox(
+                        width: 20,
                       ),
-                    ),
-                  ]),
-                ),
-                GestureDetector(
-                    onTap: () {
-                      addMessage();
-                    },
-                    child: Container(
-                        margin: EdgeInsets.fromLTRB(5, 0, 8, 0),
-                        width: MediaQuery.of(context).size.width * 0.1,
-                        height: MediaQuery.of(context).size.height * 0.06,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: Colors.red),
-                        child: Icon(Icons.send)))
-              ],
+                      Container(
+                        child: Expanded(
+                          child: TextField(
+                              cursorHeight: 23.0,
+                              controller: messageEditingController,
+                              decoration: InputDecoration(
+                                  hintStyle: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                  hintText: "Type The Message",
+                                  border: InputBorder.none)),
+                        ),
+                      ),
+                    ]),
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        addMessage();
+                      },
+                      child: Container(
+                          margin: EdgeInsets.fromLTRB(5, 0, 8, 0),
+                          width: MediaQuery.of(context).size.width * 0.1,
+                          height: MediaQuery.of(context).size.height * 0.06,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: Colors.red),
+                          child: Icon(Icons.send)))
+                ],
+              ),
             ),
-          ),
-        ]));
+          ]),
+        ));
   }
 }
 
