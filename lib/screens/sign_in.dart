@@ -4,7 +4,6 @@ import 'package:chat_app/models/database.dart';
 import 'package:chat_app/screens/chat_room_screen.dart';
 import 'package:chat_app/widget/forget_password.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
